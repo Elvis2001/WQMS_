@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="pt-3 pb-2 mb-3 border-bottom">
+      <h2>Table Value Evaluation</h2>
+      <div class="table-responsive small">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Timestamp</th>
+              <th scope="col">Temperature (°C)</th>
+              <th scope="col">TDS (ppm)</th>
+              <th scope="col">Turbidity (NTU)</th>
+            </tr>
+          </thead>
+          <tbody id="dataBody">
+            <!-- This empty tbody element will be populated dynamically with data -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+{% endblock %}

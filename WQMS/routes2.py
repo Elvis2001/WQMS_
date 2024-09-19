@@ -1,0 +1,14 @@
+import subprocess
+from flask import Blueprint, jsonify
+
+routes2 = Blueprint('routes2', __name__)
+
+@routes2.route('/run-model', methods=['GET'])
+def run_model():
+    script_path = r'C:\Users\Josep\Documents\School stuff\School Stuff 500\Final Year Project\WQMS_\WQMS\water_prediction_model.py'
+    
+    try:
+        result = subprocess.run(['python', script_path], check=True, capture_output=True, text=True)
+        return jsonify({"message": "Script executed successfully", "output": result.stdout}), 200
+    except subprocess.CalledProcessError as e:
+        return jsonify({"message": "Error executing script", "error": e.stderr}), 500

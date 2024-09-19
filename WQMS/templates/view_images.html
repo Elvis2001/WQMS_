@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Generated Images</title>
+    <style>
+        img {
+            margin: 10px;
+            width: 300px;
+            height: auto;
+        }
+    </style>
+    <script>
+        // Automatically refresh the page every 60 seconds to get the latest images
+        setTimeout(function() {
+            window.location.reload();
+        }, 60000); // 60 seconds
+    </script>
+</head>
+<body>
+    <h1>Real-Time Generated Images</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    {% if images %}
+        <div>
+            {% for image in images %}
+                <div>
+                    <a href="{{ url_for('routes.serve_image', filename=image) }}">
+                        <img src="{{ url_for('routes.serve_image', filename=image) }}" alt="{{ image }}">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No images found. Please wait while the model generates new images.</p>
+    {% endif %}
+</body>
+</html>
