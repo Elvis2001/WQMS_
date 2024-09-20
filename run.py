@@ -26,6 +26,6 @@ scheduler.start()
 
 if __name__ == '__main__':
     try:
-        app.run(debug=True)
+        app.run(debug=False)
     except (KeyboardInterrupt, SystemExit):
         scheduler.shutdown()
