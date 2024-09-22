@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "builds": [
+        {"src": "WQMS_/WQMS/__init__.py", "use": "@vercel/python"}
+    ],
+    "routes": [
+        {"src": "/(.*)", "dest": "WQMS_/WQMS/__init__.py"}
+    ]
+}
