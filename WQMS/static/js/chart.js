@@ -1,6 +1,10 @@
 // Function to fetch and update real-time data
 function updateRealtimeData() {
+<<<<<<< HEAD
   fetch('http://192.168.43.139:5000/send_data') // Replace with the actual endpoint for fetching data
+=======
+  fetch('https://wqms-kwv1.onrender.com/send_data') // Replace with the actual endpoint for fetching data
+>>>>>>> 5b171305871d3bb18cfadd99d06da7d5402e1c87
     .then(response => response.json())
     .then(data => {
       // Extract hours and minutes from the timestamp and format as "hh:mm"

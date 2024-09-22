@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 from flask_mail import Message
 from datetime import datetime
 
-routes = Blueprint('routes', __name__)
+#routes = Blueprint('routes', __name__)
 
 alert_interval = 43200  # 12 hours in seconds
 last_alert_time = None

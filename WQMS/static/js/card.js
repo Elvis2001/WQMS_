@@ -1,5 +1,9 @@
 function updateCardValues() {
+<<<<<<< HEAD
   fetch('http://192.168.43.139:5000/send_data') // Fetch data from the server
+=======
+  fetch('https://wqms-kwv1.onrender.com/send_data') // Fetch data from the server
+>>>>>>> 5b171305871d3bb18cfadd99d06da7d5402e1c87
     .then(response => response.json()) // Parse the JSON data
     .then(data => {
       console.log('Data received:', data); // Log data to the console for inspection

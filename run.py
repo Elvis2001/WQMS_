@@ -10,12 +10,12 @@ from WQMS.routes2 import routes2
 load_dotenv()
 
 # Register blueprints
-app.register_blueprint(routes)
-app.register_blueprint(routes2)
+#app.register_blueprint(routes)
+#app.register_blueprint(routes2)
 
 def scheduled_task():
     try:
-        response = requests.get('http://localhost:5000/run-model')
+        response = requests.get('https://wqms-kwv1.onrender.com/run-model')
         print(response.json())
     except Exception as e:
         print(f"Failed to trigger script: {e}")
