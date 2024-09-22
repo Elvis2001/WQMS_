@@ -1,9 +1,10 @@
 import subprocess
 from flask import Blueprint, jsonify
+from WQMS import app
 
-#routes2 = Blueprint('routes2', __name__)
 
-@routes2.route('/run-model', methods=['GET'])
+
+@app.route('/run-model', methods=['GET'])
 def run_model():
     script_path = 'WQMS_/WQMS/water_prediction_model.py'
     

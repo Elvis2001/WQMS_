@@ -2,13 +2,13 @@ import os
 import pandas as pd
 import subprocess
 from flask import Blueprint, request, jsonify, render_template, Response, send_from_directory
-from WQMS import db, mail
+from WQMS import db, mail,app
 from WQMS.models import SensorData
 from werkzeug.utils import secure_filename
 from flask_mail import Message
 from datetime import datetime
 
-#routes = Blueprint('routes', __name__)
+
 
 alert_interval = 43200  # 12 hours in seconds
 last_alert_time = None
@@ -19,11 +19,11 @@ thresholdValues = {
     'tds': 350
 }
 
-@routes.route('/')
+@app.route('/')
 def home():
     return render_template('home.html')
 
-@routes.route('/upload', methods=['POST'])
+@app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
         return jsonify({'message': 'No file part'}), 400
@@ -50,7 +50,7 @@ def upload_file():
     else:
         return jsonify({'message': 'Invalid file type'}), 400
 
-@routes.route('/data/<filename>')
+@app.route('/data/<filename>')
 def serve_data_file(filename):
     # Use absolute path for data_folder
     data_folder = os.path.abspath('WQMS/data')
@@ -73,15 +73,15 @@ def serve_data_file(filename):
         print(f"Error serving file: {str(e)}")
         return jsonify({'message': f'Error serving file: {str(e)}'}), 500
     
-@routes.route('/about')
+@app.route('/about')
 def about():
     return render_template('about.html')
 
-@routes.route('/table')
+@app.route('/table')
 def table():
     return render_template('table.html')
 
-@routes.route('/receive_data', methods=['POST'])
+@app.route('/receive_data', methods=['POST'])
 def receive_data():
     try:
         data = request.json
@@ -125,7 +125,7 @@ def send_email_alert(data, thresholdValues):
             msg.body = alert_message
             mail.send(msg)
 
-@routes.route('/send_data', methods=['GET'])
+@app.route('/send_data', methods=['GET'])
 def get_data():
     try:
         data = SensorData.query.all()
@@ -134,7 +134,7 @@ def get_data():
     except Exception as e:
         return str(e), 400
 
-@routes.route('/export_csv', methods=['GET'])
+@app.route('/export_csv', methods=['GET'])
 def export_csv():
     try:
         data = SensorData.query.all()
@@ -150,7 +150,7 @@ def export_csv():
     except Exception as e:
         return str(e), 400
     
-@routes.route('/view-images')
+@app.route('/view-images')
 def view_images():
     # Absolute path to the data folder where PNGs are stored
     data_folder = os.path.abspath('WQMS/data')
@@ -166,7 +166,7 @@ def view_images():
     # Render the image list on a webpage
     return render_template('view_images.html', images=images)
 
-@routes.route('/images/<filename>')
+@app.route('/images/<filename>')
 def serve_image(filename):
     data_folder = os.path.abspath('WQMS/data')
     file_path = os.path.join(data_folder, filename)
