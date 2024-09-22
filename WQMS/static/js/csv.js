@@ -1,5 +1,5 @@
 document.getElementById('export-csv').addEventListener('click', function () {
-    fetch('https://wqms.onrender.com//export_csv', {
+    fetch('https://wqms-kwv1.onrender.com/export_csv', {
         method: 'GET'
     })
     .then(response => response.blob())
