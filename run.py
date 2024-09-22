@@ -10,8 +10,8 @@ from WQMS.routes2 import routes2
 load_dotenv()
 
 # Register blueprints
-app.register_blueprint(routes)
-app.register_blueprint(routes2)
+#app.register_blueprint(routes)
+#app.register_blueprint(routes2)
 
 def scheduled_task():
     try:
