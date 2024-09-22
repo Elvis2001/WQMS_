@@ -1,5 +1,5 @@
 function updateCardValues() {
-  fetch('https://wqms.onrender.com/send_data') // Fetch data from the server
+  fetch('https://wqms-kwv1.onrender.com/send_data') // Fetch data from the server
     .then(response => response.json()) // Parse the JSON data
     .then(data => {
       console.log('Data received:', data); // Log data to the console for inspection
