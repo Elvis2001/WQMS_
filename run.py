@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 from apscheduler.schedulers.background import BackgroundScheduler
 from WQMS import app
 from WQMS.scheduler import scheduler
-from WQMS.routes import routes
-from WQMS.routes2 import routes2
+#from WQMS.routes import routes
+#from WQMS.routes2 import routes2
 
 # Load environment variables
 load_dotenv()
