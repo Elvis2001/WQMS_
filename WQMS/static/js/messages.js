@@ -51,7 +51,7 @@ function showAlertMessage(type, message) {
 }
 
 function fetchAndCheckData(thresholdValues) {
-  fetch('https://wqms.onrender.com/send_data')
+  fetch('http://192.168.43.139:5000/send_data')
     .then(response => response.json())
     .then(data => {
       checkDataAndShowAlerts(data, thresholdValues);
