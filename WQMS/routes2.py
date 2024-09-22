@@ -5,7 +5,7 @@ routes2 = Blueprint('routes2', __name__)
 
 @routes2.route('/run-model', methods=['GET'])
 def run_model():
-   script_path = 'WQMS_/WQMS/water_prediction_model.py'
+    script_path = 'WQMS_/WQMS/water_prediction_model.py'
     
     try:
         result = subprocess.run(['python', script_path], check=True, capture_output=True, text=True)
