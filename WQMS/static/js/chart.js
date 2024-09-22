@@ -1,6 +1,6 @@
 // Function to fetch and update real-time data
 function updateRealtimeData() {
-  fetch('https://wqms.onrender.com/send_data') // Replace with the actual endpoint for fetching data
+  fetch('https://wqms-kwv1.onrender.com/send_data') // Replace with the actual endpoint for fetching data
     .then(response => response.json())
     .then(data => {
       // Extract hours and minutes from the timestamp and format as "hh:mm"
